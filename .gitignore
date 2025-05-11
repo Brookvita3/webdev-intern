@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### SSL ###
+src/main/resources/ssl/
+.env
