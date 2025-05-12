@@ -23,7 +23,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN toan < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getToanReport();
+    SubjectScoreLevelProjection getToanScoreLevelProjection();
 
     @Query(value = """
         SELECT 'ngu_van' AS subject,
@@ -33,7 +33,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN ngu_van < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getNguVanReport();
+    SubjectScoreLevelProjection getNguVanScoreLevelProjection();
 
     @Query(value = """
         SELECT 'ngoai_ngu' AS subject,
@@ -43,7 +43,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN ngoai_ngu < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getNgoaiNguReport();
+    SubjectScoreLevelProjection getNgoaiNguScoreLevelProjection();
 
     @Query(value = """
         SELECT 'vat_li' AS subject,
@@ -53,7 +53,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN vat_li < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getVatLiReport();
+    SubjectScoreLevelProjection getVatLiScoreLevelProjection();
 
     @Query(value = """
         SELECT 'hoa_hoc' AS subject,
@@ -63,7 +63,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN hoa_hoc < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getHoaHocReport();
+    SubjectScoreLevelProjection getHoaHocScoreLevelProjection();
 
     @Query(value = """
         SELECT 'sinh_hoc' AS subject,
@@ -73,7 +73,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN sinh_hoc < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getSinhHocReport();
+    SubjectScoreLevelProjection getSinhHocScoreLevelProjection();
 
     @Query(value = """
         SELECT 'lich_su' AS subject,
@@ -83,7 +83,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN lich_su < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getLichSuReport();
+    SubjectScoreLevelProjection getLichSuScoreLevelProjection();
 
     @Query(value = """
         SELECT 'dia_li' AS subject,
@@ -93,7 +93,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN dia_li < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getDiaLiReport();
+    SubjectScoreLevelProjection getDiaLiScoreLevelProjection();
 
     @Query(value = """
         SELECT 'gdcd' AS subject,
@@ -103,7 +103,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
                SUM(CASE WHEN gdcd < 4 THEN 1 ELSE 0 END) AS level4
         FROM students
         """, nativeQuery = true)
-    SubjectScoreLevelProjection getGdcdReport();
+    SubjectScoreLevelProjection getGdcdScoreLevelProjection();
 
     @Query(value = """
     SELECT sbd, toan, vat_li, hoa_hoc,

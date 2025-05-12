@@ -40,7 +40,7 @@ public class StudentController {
                     ResponseObject.builder()
                             .status(HttpStatus.OK.value())
                             .message("Get report of all subject successfully")
-                            .data(reportService.getFullReport())
+                            .data(reportService.getListSubjectReports())
                             .build()
             );
         } else {
@@ -48,7 +48,7 @@ public class StudentController {
                     ResponseObject.builder()
                             .status(HttpStatus.OK.value())
                             .message(String.format("Get report of %s successfully", subject))
-                            .data(reportService.generateFeatureReport(subject))
+                            .data(reportService.getSubjectReport(subject))
                             .build()
             );
 

@@ -1,7 +1,6 @@
 package com.example.webdev_intern.service.report;
 
-import com.example.webdev_intern.model.subject.SubjectReport;
-import com.example.webdev_intern.model.entity.SubjectScoreLevelProjection;
+import com.example.webdev_intern.dto.SubjectReportDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +12,11 @@ public class ReportService {
 
     private final SubjectManager subjectManager;
 
-    public SubjectScoreLevelProjection generateFeatureReport(String subject) {
+    public SubjectReportDTO getSubjectReport(String subject) {
         return subjectManager.getSubjectReport(subject);
     }
 
-    public Map<String, SubjectReport> getFullReport() {
-        return subjectManager.getFullReport();
+    public List<SubjectReportDTO> getListSubjectReports() {
+        return subjectManager.getListSubjectReport();
     }
-
 }
