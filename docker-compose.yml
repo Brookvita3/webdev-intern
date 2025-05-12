@@ -1,0 +1,35 @@
+services:
+  webdev-intern:
+    image: brookvita3/webdev-intern:0.0.1
+    container_name: webdev-intern
+    ports:
+      - "8080:8080"
+    networks:
+      - app-networks
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    restart: on-failure
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0.41
+    container_name: mysql
+    expose:
+      - "3306"
+    networks:
+      - app-networks
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=webdev_intern
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+networks:
+  app-networks:
+    driver: bridge
+
+volumes:
+  mysql_data:
