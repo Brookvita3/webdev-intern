@@ -5,5 +5,4 @@ public interface GroupAStudentProjection {
     Double getToan();
     Double getVatLi();
     Double getHoaHoc();
-    Double getTotalScore();
 }
