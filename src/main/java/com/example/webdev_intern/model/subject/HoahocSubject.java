@@ -18,7 +18,7 @@ public class HoahocSubject implements SubjectReport {
     }
 
     @Override
-    @Cacheable("subjectReports")
+    @Cacheable(value = "subjectReports", key = "'hoa_hoc'")
     public SubjectScoreLevelDTO getScoreLevelDTO() {
         return SubjectReport.toSubjectScoreLevelDTO(studentRepository.getHoaHocScoreLevelProjection());
     }

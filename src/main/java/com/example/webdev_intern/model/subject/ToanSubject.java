@@ -18,7 +18,7 @@ public class ToanSubject implements SubjectReport {
     }
 
     @Override
-    @Cacheable("subjectReports")
+    @Cacheable(value = "subjectReports", key = "'toan'")
     public SubjectScoreLevelDTO getScoreLevelDTO() {
         return SubjectReport.toSubjectScoreLevelDTO(studentRepository.getToanScoreLevelProjection());
     }

@@ -18,7 +18,7 @@ public class DialiSubject implements SubjectReport {
     }
 
     @Override
-    @Cacheable("subjectReports")
+    @Cacheable(value = "subjectReports", key = "'dia_li'")
     public SubjectScoreLevelDTO getScoreLevelDTO() {
         return SubjectReport.toSubjectScoreLevelDTO(studentRepository.getDiaLiScoreLevelProjection());
     }

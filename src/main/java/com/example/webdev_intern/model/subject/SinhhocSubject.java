@@ -18,7 +18,7 @@ public class SinhhocSubject implements SubjectReport {
     }
 
     @Override
-    @Cacheable("subjectReports")
+    @Cacheable(value = "subjectReports", key = "'sinh_hoc'")
     public SubjectScoreLevelDTO getScoreLevelDTO() {
         return SubjectReport.toSubjectScoreLevelDTO(studentRepository.getSinhHocScoreLevelProjection());
     }

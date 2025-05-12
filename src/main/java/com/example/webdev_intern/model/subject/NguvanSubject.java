@@ -18,7 +18,7 @@ public class NguvanSubject implements SubjectReport {
     }
 
     @Override
-    @Cacheable("subjectReports")
+    @Cacheable(value = "subjectReports", key = "'ngu_van'")
     public SubjectScoreLevelDTO getScoreLevelDTO() {
         return SubjectReport.toSubjectScoreLevelDTO(studentRepository.getNguVanScoreLevelProjection());
     }

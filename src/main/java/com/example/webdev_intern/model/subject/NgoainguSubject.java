@@ -18,7 +18,7 @@ public class NgoainguSubject implements SubjectReport {
     }
 
     @Override
-    @Cacheable("subjectReports")
+    @Cacheable(value = "subjectReports", key = "'ngoai_ngu'")
     public SubjectScoreLevelDTO getScoreLevelDTO() {
         return SubjectReport.toSubjectScoreLevelDTO(studentRepository.getNgoaiNguScoreLevelProjection());
     }
