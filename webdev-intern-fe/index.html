@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G-Scores - Student Score Management</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>G-Scores</h1>
+      </header>
+
+      <div class="content">
+        <div class="sidebar">
+          <h2>Menu</h2>
+          <nav>
+            <button class="nav-item active" data-page="dashboard">
+              Dashboard
+            </button>
+            <button class="nav-item" data-page="search">Search Scores</button>
+            <button class="nav-item" data-page="reports">Reports</button>
+            <button class="nav-item" data-page="settings">Settings</button>
+          </nav>
+        </div>
+
+        <main>
+          <!-- Dashboard Page -->
+          <div class="page" id="dashboard-page">
+            <div class="card">
+              <div class="card-header">
+                <h2>Top Students</h2>
+                <p>
+                  List top 10 students of group A including (math, physics,
+                  chemistry)
+                </p>
+                <p></p>
+              </div>
+
+              <div class="card-content">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Registration</th>
+                      <th>Math</th>
+                      <th>Physics</th>
+                      <th>Chemistry</th>
+                      <th>Total Score</th>
+                    </tr>
+                  </thead>
+                  <tbody id="top-students-table">
+                    <!-- Will be filled by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Page -->
+          <div class="page" id="search-page" style="display: none">
+            <div class="card">
+              <div class="card-header">
+                <h2>User Registration</h2>
+              </div>
+              <div class="card-content">
+                <div class="search-form">
+                  <div class="form-group">
+                    <label for="registration">Registration Number:</label>
+                    <input
+                      type="text"
+                      id="registration"
+                      placeholder="Enter registration number"
+                    />
+                  </div>
+                  <button id="search-button" class="submit-button">
+                    Submit
+                  </button>
+                </div>
+                <p id="search-error" class="error"></p>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px">
+              <div class="card-header">
+                <h2>Detailed Scores</h2>
+                <p id="student-info">Detailed view of search scores here!</p>
+              </div>
+              <div class="card-content">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+                      <th>Score</th>
+                      <th>Grade</th>
+                    </tr>
+                  </thead>
+                  <tbody id="student-scores">
+                    <!-- Will be filled by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reports Page
+          <div class="page" id="reports-page" style="display: none">
+            <div class="card">
+              <div class="card-header">
+                <h2>Subject Score Distribution</h2>
+                <p>Distribution of scores across different subjects</p>
+              </div>
+              <div class="card-content">
+                <div class="chart-container">
+                  <canvas id="subject-chart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px">
+              <div class="card-header">
+                <h2>Score Range Distribution</h2>
+                <p>Percentage of students in each score range</p>
+              </div>
+              <div class="card-content">
+                <div class="stats-grid">
+                  <div class="stat-box excellent">
+                    <div class="stat-title">Excellent (≥8)</div>
+                    <div class="stat-value">38%</div>
+                    <div class="stat-desc">380 students</div>
+                  </div>
+                  <div class="stat-box good">
+                    <div class="stat-title">Good (6-7.99)</div>
+                    <div class="stat-value">31%</div>
+                    <div class="stat-desc">310 students</div>
+                  </div>
+                  <div class="stat-box average">
+                    <div class="stat-title">Average (4-5.99)</div>
+                    <div class="stat-value">21%</div>
+                    <div class="stat-desc">210 students</div>
+                  </div>
+                  <div class="stat-box poor">
+                    <div class="stat-title">Poor (<4)</div>
+                    <div class="stat-value">10%</div>
+                    <div class="stat-desc">100 students</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Reports Page -->
+          <div class="page" id="reports-page" style="display: none">
+            <div class="card">
+              <div class="card-header">
+                <h2>Subject Score Distribution</h2>
+                <p>Distribution of scores across different subjects</p>
+              </div>
+              <div class="card-content">
+                <div class="form-group">
+                  <label for="subject-select">Select Subject:</label>
+                  <select id="subject-select">
+                    <option value="toan">Math (Toán)</option>
+                    <option value="ngu_van">Literature (Ngữ Văn)</option>
+                    <option value="ngoai_ngu">
+                      Foreign Language (Ngoại Ngữ)
+                    </option>
+                    <option value="vat_li">Physics (Vật Lý)</option>
+                    <option value="hoa_hoc">Chemistry (Hóa Học)</option>
+                    <option value="sinh_hoc">Biology (Sinh Học)</option>
+                    <option value="lich_su">History (Lịch Sử)</option>
+                    <option value="dia_li">Geography (Địa Lý)</option>
+                    <option value="gdcd">Civic Education (GDCD)</option>
+                  </select>
+                </div>
+                <div class="chart-container">
+                  <canvas id="subject-chart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings Page -->
+          <div class="page" id="settings-page" style="display: none">
+            <div class="card">
+              <div class="card-header">
+                <h2>Application Settings</h2>
+                <p>Manage your application preferences</p>
+              </div>
+              <div class="card-content">
+                <div class="form-group">
+                  <label for="api-url">API Endpoint URL</label>
+                  <input
+                    type="text"
+                    id="api-url"
+                    value="http://localhost:8080"
+                  />
+                  <p class="input-desc">The base URL for API requests</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="refresh-rate">Data Refresh Rate (seconds)</label>
+                  <select id="refresh-rate">
+                    <option value="15">15 seconds</option>
+                    <option value="30" selected>30 seconds</option>
+                    <option value="60">1 minute</option>
+                    <option value="300">5 minutes</option>
+                  </select>
+                </div>
+
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="email-notifications" checked />
+                  <label for="email-notifications"
+                    >Enable email notifications</label
+                  >
+                </div>
+
+                <button id="save-settings">Save Settings</button>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px">
+              <div class="card-header">
+                <h2>System Information</h2>
+                <p>Information about the system</p>
+              </div>
+              <div class="card-content">
+                <div class="info-row">
+                  <span class="info-label">Version:</span>
+                  <span class="info-value">1.0.0</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Last Updated:</span>
+                  <span class="info-value">May 12, 2025</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Database Status:</span>
+                  <span class="info-value status-ok">Connected</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">API Status:</span>
+                  <span class="info-value status-ok">Online</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
