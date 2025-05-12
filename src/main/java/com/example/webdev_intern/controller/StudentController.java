@@ -1,8 +1,8 @@
 package com.example.webdev_intern.controller;
 
 import com.example.webdev_intern.response.ResponseObject;
-import com.example.webdev_intern.service.ScoreReportService;
-import com.example.webdev_intern.service.StudentService;
+import com.example.webdev_intern.service.report.ReportService;
+import com.example.webdev_intern.service.student.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,15 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Map;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/students")
 public class StudentController {
     private final StudentService studentService;
-    private final ScoreReportService scoreReportService;
+    private final ReportService reportService;
 
     @GetMapping("/search")
     public ResponseEntity<?> register(
@@ -38,28 +35,24 @@ public class StudentController {
     public ResponseEntity<?> report(
             @RequestParam(required = false) String subject) {
 
-        List<Map<String, Object>> data;
         if (subject == null) {
-            List<String> allSubjects = List.of(
-                    "toan", "ngu_van", "ngoai_ngu", "vat_li", "hoa_hoc",
-                    "sinh_hoc", "lich_su", "dia_li", "gdcd"
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    ResponseObject.builder()
+                            .status(HttpStatus.OK.value())
+                            .message("Get report of all subject successfully")
+                            .data(reportService.getFullReport())
+                            .build()
+            );
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    ResponseObject.builder()
+                            .status(HttpStatus.OK.value())
+                            .message(String.format("Get report of %s successfully", subject))
+                            .data(reportService.generateFeatureReport(subject))
+                            .build()
             );
 
-            data = allSubjects.stream()
-                    .map(scoreReportService::generateFeatureReport)
-                    .flatMap(List::stream)
-                    .toList();
-        } else {
-            data = scoreReportService.generateFeatureReport(subject);
         }
-
-        return ResponseEntity.status(HttpStatus.OK).body(
-                ResponseObject.builder()
-                        .status(HttpStatus.OK.value())
-                        .message("Get report successfully")
-                        .data(data)
-                        .build()
-        );
     }
 
     @GetMapping("/dashboard/top10/group-a")

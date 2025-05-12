@@ -1,10 +1,9 @@
-package com.example.webdev_intern.service;
+package com.example.webdev_intern.service.student;
 
 import com.example.webdev_intern.model.entity.Student;
 import com.example.webdev_intern.repository.StudentRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

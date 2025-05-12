@@ -1,4 +1,4 @@
-package com.example.webdev_intern.service;
+package com.example.webdev_intern.service.student;
 
 import com.example.webdev_intern.exception.DataNotFoundException;
 import com.example.webdev_intern.model.entity.GroupAStudentProjection;
