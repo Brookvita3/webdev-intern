@@ -1,4 +1,4 @@
-const BASE_URL = 'http://34.87.113.216:8080';
+const BASE_URL = '/api';
 
 // Hàm gọi API và hiển thị dữ liệu cho Search Scores
 async function fetchStudentData(registrationNumber) {
