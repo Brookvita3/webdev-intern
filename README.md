@@ -10,6 +10,17 @@ Built with Java Spring Boot (backend), MySQL (database), and HTML/CSS/JS (fronte
 
 ---
 
+
+## 📜 API Documentation
+
+You can view the API documentation for the backend at the following link:
+
+- [Backend API Documentation (Springdoc OpenAPI)](http://34.87.113.216:8080/swagger-ui/index.html)
+
+This will give you detailed information about the available API endpoints, request parameters, and response structure.
+
+---
+
 ## 📦 Backend Setup (Spring Boot + MySQL)
 
 ### 🐳 Using Docker Compose
