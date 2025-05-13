@@ -33,16 +33,12 @@
             <div class="card">
               <div class="card-header">
                 <h2>Top Students</h2>
-                <p>
-                  List top 10 students of group A including (math, physics,
-                  chemistry)
-                </p>
-                <p></p>
+                <p>Students with highest total scores</p>
               </div>
-
               <div class="card-content">
-                <table>
-                  <thead>
+                <div class="table-container">
+                  <table>
+                    <thead>
                     <tr>
                       <th>Registration</th>
                       <th>Math</th>
@@ -50,15 +46,17 @@
                       <th>Chemistry</th>
                       <th>Total Score</th>
                     </tr>
-                  </thead>
-                  <tbody id="top-students-table">
+                    </thead>
+                    <tbody id="top-students-table">
                     <!-- Will be filled by JavaScript -->
-                  </tbody>
-                </table>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Search Page -->
           <!-- Search Page -->
           <div class="page" id="search-page" style="display: none">
             <div class="card">
@@ -70,14 +68,12 @@
                   <div class="form-group">
                     <label for="registration">Registration Number:</label>
                     <input
-                      type="text"
-                      id="registration"
-                      placeholder="Enter registration number"
+                            type="text"
+                            id="registration"
+                            placeholder="Enter registration number"
                     />
                   </div>
-                  <button id="search-button" class="submit-button">
-                    Submit
-                  </button>
+                  <button id="search-button" class="submit-button">Submit</button>
                 </div>
                 <p id="search-error" class="error"></p>
               </div>
@@ -89,18 +85,20 @@
                 <p id="student-info">Detailed view of search scores here!</p>
               </div>
               <div class="card-content">
-                <table>
-                  <thead>
+                <div class="table-container">
+                  <table>
+                    <thead>
                     <tr>
                       <th>Subject</th>
                       <th>Score</th>
                       <th>Grade</th>
                     </tr>
-                  </thead>
-                  <tbody id="student-scores">
+                    </thead>
+                    <tbody id="student-scores">
                     <!-- Will be filled by JavaScript -->
-                  </tbody>
-                </table>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

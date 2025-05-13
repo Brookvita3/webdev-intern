@@ -321,3 +321,28 @@ button:hover {
     width: 100%;
   }
 }
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th, td {
+    white-space: nowrap; /* Ngăn nội dung xuống dòng */
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    th, td {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
