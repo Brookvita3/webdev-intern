@@ -1,8 +1,16 @@
 package com.example.webdev_intern.controller;
 
+import com.example.webdev_intern.dto.StudentGroupADTO;
+import com.example.webdev_intern.dto.SubjectReportDTO;
+import com.example.webdev_intern.model.entity.Student;
 import com.example.webdev_intern.response.ResponseObject;
 import com.example.webdev_intern.service.report.ReportService;
 import com.example.webdev_intern.service.student.StudentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +26,16 @@ public class StudentController {
     private final StudentService studentService;
     private final ReportService reportService;
 
+
+    @Operation(summary = "Search student by registration")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Successful student lookup",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = Student.class)
+            )
+    )
     @GetMapping("/search")
     public ResponseEntity<?> register(
             @RequestParam String registration) {
@@ -31,6 +49,15 @@ public class StudentController {
         );
     }
 
+    @Operation(summary = "Get report for all or specific subject")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Subject report(s) retrieved successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    array = @ArraySchema(schema = @Schema(implementation = SubjectReportDTO.class))
+            )
+    )
     @GetMapping("/report")
     public ResponseEntity<?> report(
             @RequestParam(required = false) String subject) {
@@ -55,6 +82,15 @@ public class StudentController {
         }
     }
 
+    @Operation(summary = "Get top 10 students in Group A")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Top 10 Group A students retrieved successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    array = @ArraySchema(schema = @Schema(implementation = StudentGroupADTO.class))
+            )
+    )
     @GetMapping("/dashboard/top10/group-a")
     public ResponseEntity<?> getTop10GroupAStudents() {
         return ResponseEntity.ok(
