@@ -1,8 +1,10 @@
+const BASE_URL = 'http://34.87.113.216:8080';
+
 // Hàm gọi API và hiển thị dữ liệu cho Search Scores
 async function fetchStudentData(registrationNumber) {
     try {
         console.log('Fetching data for registration:', registrationNumber);
-        const url = `http://localhost:8080/students/search?registration=${encodeURIComponent(registrationNumber)}`;
+        const url = `${BASE_URL}/students/search?registration=${encodeURIComponent(registrationNumber)}`;
         console.log('Request URL:', url);
 
         const response = await fetch(url, {
@@ -71,7 +73,7 @@ function getGrade(score) {
 // Hàm gọi API và hiển thị dữ liệu cho Dashboard (Top Students)
 async function fetchTopStudentsData() {
     try {
-        const url = `http://localhost:8080/students/dashboard/top10/group-a`;
+        const url = `${BASE_URL}/students/dashboard/top10/group-a`;
         console.log('Request URL:', url);
 
         const response = await fetch(url, {
@@ -129,7 +131,7 @@ function displayDashboardError(message) {
 // Hàm gọi API và hiển thị báo cáo
 async function fetchReportData(subject) {
     try {
-        const url = `http://localhost:8080/students/report?subject=${encodeURIComponent(subject)}`;
+        const url = `${BASE_URL}/students/report?subject=${encodeURIComponent(subject)}`;
         console.log('Fetching report for subject:', subject);
         console.log('Request URL:', url);
 
