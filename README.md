@@ -1,17 +1,13 @@
-# WebDev Intern Dashboard
-
+# WebDev Intern
 A simple fullstack web application for managing and viewing student scores.  
 Built with Java Spring Boot (backend), MySQL (database), and HTML/CSS/JS (frontend).
 
-## 🌐 Live Demo
-
+### Live Demo
 - **Frontend**: [https://marvelous-custard-c5dfdf.netlify.app](https://marvelous-custard-c5dfdf.netlify.app)
 - **Backend (Public IP)**: `http://34.87.113.216:8080`
 
----
 
-
-## 📜 API Documentation
+### API Documentation
 
 You can view the API documentation for the backend at the following link:
 
@@ -19,15 +15,13 @@ You can view the API documentation for the backend at the following link:
 
 This will give you detailed information about the available API endpoints, request parameters, and response structure.
 
----
 
-## 📦 Backend Setup (Spring Boot + MySQL)
-
-### 🐳 Using Docker Compose
+## Backend Setup (Spring Boot + MySQL)
+### Using Docker Compose
 
 Create a folder (e.g., `webapp_intern/`) and add these files:
 
-#### `docker-compose.yml`
+### `docker-compose.yml`
 
 ```yaml
 services:
@@ -66,43 +60,41 @@ networks:
 volumes:
   mysql_data:
 ```
-#### `.env`
+### `.env`
 ```dotenv
 SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/webdev_intern
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD=root
 ```
-#### ▶️ Run with Docker
-
+### Run with Docker
 ```commandline
 docker compose up -d
 ```
-Your backend will be available at http://<your-vm-ip>:8080.
+Your backend will be available at http://your-vm-ip:8080.
 
----
 
-## 🎨 Frontend Setup
-### 📁 Folder Structure
+## Frontend Setup
+### Folder Structure
 Just HTML/CSS/JS:
 
 ````text
 webdev-intern-fe/
 ├── index.html
-├── style.css
+├── styles.css
 ├── script.js
 └── _redirects
 ````
-### 🌍 Deploy to Netlify
-Zip webdev-intern-fe/ and drag-drop it to https://app.netlify.com/drop
+### Deploy to Netlify
+Drag-drop webdev-intern folder to https://app.netlify.com/drop
 > Use `_redirects` to rewrite frontend API calls and ensure HTTPS compatibility when the backend is only available via HTTP.
 
-### 🛠 Features
-- 🔍 Search student scores
-- 📊 View top 10 students in group A including (math, physics, chemistry)
-- 🧪 Simple API integration with async fetch
-- 🌐 Seamless frontend-backend communication
+### Features
+- Search student scores
+- View top 10 students in group A including (math, physics, chemistry)
+- Simple API integration with async fetch
+- Seamless frontend-backend communication
 
-📦 Technologies
+### Technologies
 - Backend: Java 21, Spring Boot, JPA, MySQL
 - Frontend: HTML, CSS, JavaScript (Vanilla)
 - Deploy: Docker, Docker Compose, Netlify, Google Cloud VM
